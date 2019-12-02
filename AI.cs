@@ -6,7 +6,7 @@ using UnityEngine.AI;
 namespace KiwiKaleidoscope.AI
 {
     /// <summary>
-    /// General base for non-Pest AI.
+    /// General base for AI.
     /// Handles a number of shared variables.
     /// </summary>
     public class AI : MonoBehaviour
@@ -41,7 +41,9 @@ namespace KiwiKaleidoscope.AI
         protected List<Item> items = new List<Item>();
 
         Vector3 destin;
-
+        
+        //Pilfer referred to any items on the ground in the game.
+        
         protected BTState Plunder()
         {
             //If pilfer is null, state failed.
@@ -67,7 +69,7 @@ namespace KiwiKaleidoscope.AI
 
         protected BTState Wander()
         {
-            //If MooMoo is currently idling, return failure.
+            //If AI is currently idling, return failure.
             if (idleTimer != 0 && !navAgent.hasPath) return BTState.Failure;
             if (!navAgent.hasPath)
             {
